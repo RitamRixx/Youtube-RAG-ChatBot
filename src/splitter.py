@@ -8,9 +8,9 @@ def split_transcript(transcript: str)->list[Document]:
     Splits raw transcript text into chunks using RecursiveCharacterTextSplitter.
     """
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=100,
-        separators=["\n\n", "\n", ".", " ", ""]
+        chunk_size=800,
+        chunk_overlap=200,
+        separators=["\n\n", "\n", ".", " ", "",".", "!", "?"]
     )
 
     chunks = splitter.create_documents([transcript])

@@ -12,7 +12,6 @@ def build_vector_store(chunks: List[Document], embedder: HuggingFaceEmbeddings) 
         embedding=embedder,
         persist_directory=VECTOR_STORE_DIR
     )
-    vector_store.persist()
     return vector_store
 
 

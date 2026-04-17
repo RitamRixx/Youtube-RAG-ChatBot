@@ -34,8 +34,8 @@ def format_docs(docs: List[Document]) -> str:
 
 
 def process_video(url: str):
-    transcript,video_id = get_transcript(url)
-    chunks = split_transcript(transcript,video_id)
+    transcript = get_transcript(url)
+    chunks = split_transcript(transcript)
     embedder = get_embedder()
     vector_store = build_vector_store(chunks, embedder)
     return vector_store
@@ -43,6 +43,10 @@ def process_video(url: str):
 
 def build_rag_chain(vector_store):
     retriever = get_retriever(vector_store)
+
+    test_docs = retriever.invoke("test")
+    print(f"[DEBUG] Retriever returned {len(test_docs)} docs")
+    
     prompt = get_rag_prompt()
 
 
